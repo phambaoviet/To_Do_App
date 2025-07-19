@@ -25,4 +25,28 @@ function addTask() {
       li.classList.remove('completed'); // Loại bỏ class completed nếu checkbox không được chọn
     }
   });
+
+  // Tạo span chứa text
+  const span = document.createElement('span'); // Tạo phần tử span mới
+  span.textContent = taskText; // Đặt nội dung của span là text của task
+
+  // Tạo nút delete
+  const deleteButton = document.createElement('button'); // Tạo nút button mới
+  deleteButton.textContent = 'Delete'; // Đặt nội dung của nút là 'Delete'
+  deleteButton.classList = 'delete-button'; // Thêm class để có thể style
+  deleteButton.addEventListener('click', function () {
+    taskList.removeChild(li); // Xóa phần tử li khỏi danh sách khi nút delete được nhấn
+  });
+
+  // Ghép các phần tử lại với nhau
+  li.appendChild(checkbox); // Thêm checkbox vào li
+  li.appendChild(span); // Thêm span vào li
+  li.appendChild(deleteButton); // Thêm nút delete vào li
+
+  // Thêm li vào danh sách
+  taskList.appendChild(li); // Thêm phần tử li vào taskList
+
+  // Xoá nội dung input sau khi thêm task
+  taskInput.value = ''; // Đặt giá trị của input về rỗng
+  taskInput.focus(); // Đặt focus lại vào input để người dùng có thể nhập task mới
 }
